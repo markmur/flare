@@ -7,15 +7,15 @@ export default {
 
     if (!cachedPosition) {
 
-      return this.getPosition().then(position => {
-        this.getLocationAndWeather(
-          position.coords.latitude,
-          position.coords.longitude
+      return new Promise(resolve => {
+        this.getPosition().then(position => {
+          this.getLocationAndWeather(
+            position.coords.latitude,
+            position.coords.longitude
         ).then(res => {
-          return new Promise(resolve => {
-            res.position = position;
-            resolve(res);
-          });
+          res.position = position;
+          return resolve(res);
+        });
         });
       });
 
@@ -48,10 +48,6 @@ export default {
 
   getPosition() {
 
-    if (!callback) {
-      throw new Error('Expecting callback function');
-    }
-
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(position => {
 
@@ -59,7 +55,7 @@ export default {
 
         console.debug('[Location]', position);
 
-        this.updatePosition(position, () => resolve);
+        this.updatePosition(position, resolve);
 
       }, err => {
 
@@ -102,6 +98,6 @@ export default {
       timestamp: position.timestamp,
     }));
 
-    if (callback) callback();
+    if (callback) callback(position);
   },
 };
