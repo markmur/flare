@@ -7,7 +7,7 @@ export default {
 
     if (!cachedPosition) {
 
-      return this.getPosition.then(position => {
+      return this.getPosition().then(position => {
         this.getLocationAndWeather(
           position.coords.latitude,
           position.coords.longitude
