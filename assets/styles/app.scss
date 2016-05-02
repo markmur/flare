@@ -7,6 +7,7 @@ html, body {
   padding: 0;
   text-align: center;
   overflow: hidden;
+  color: white;
 }
 
 ul {
@@ -52,10 +53,10 @@ strong {
 
 .app {
   height: 100vh;
-  color: white;
   padding-top: 3em;
   position: relative;
   z-index: 1;
+  color: white;
   transition: background 0.35s;
 }
 
