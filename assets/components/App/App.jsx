@@ -32,24 +32,6 @@ export default class App extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.store = this.context.store;
-  //
-  //   this.store.subscribe(() => {
-  //     console.debug('[Store State Changed]', this.store.getState());
-  //
-  //     var newState = Object.assign({}, this.state, this.store.getState());
-  //
-  //     this.setState(newState);
-  //
-  //     console.log('NEW STATE', this.state);
-  //
-  //     if (newState.weather.currently) {
-  //       this.setState({ loading: false });
-  //     }
-  //   });
-  // }
-
   render() {
     var state = this.state;
 

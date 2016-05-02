@@ -71,7 +71,7 @@ export default {
 
   getLocation(latitude, longitude) {
     // Google Maps Geodecoder
-    var url = `http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}`;
+    var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}`;
 
     return fetch(url).then(res => res.json());
   },
