@@ -45,6 +45,8 @@ export function determineWeatherFromIcon(icon = '') {
       return 'icon-cloud-rain2';
     case /snow/.test(icon):
       return 'icon-cloud-snow2';
+    case /cloudy/.test(icon):
+      return 'icon-cloud2';
     case /sleet/.test(icon):
       return 'icon-snow';
     case /fog/.test(icon):
