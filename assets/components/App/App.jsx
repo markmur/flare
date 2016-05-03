@@ -6,11 +6,13 @@ import moment from 'moment';
 import _ from 'lodash';
 import Forecast from 'components/Forecast/Forecast';
 import BarChart from 'components/BarChart/BarChart';
+import classNames from 'classnames';
 
 import {
   getLocality,
   mapWeatherToWeek,
-  convert
+  convert,
+  determineWeather
 } from 'services/utils';
 
 export default class App extends Component {
@@ -48,7 +50,7 @@ export default class App extends Component {
       <div>
       {this.state.loading ? 'Loading...' :
         <div>
-          <div class="app sunny">
+          <div class={classNames('app', determineWeather(state.weather.currently.icon))}>
             <div class="summary">
               {state.weather.currently.summary}
             </div>

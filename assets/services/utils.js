@@ -28,16 +28,32 @@ export function mapWeatherToWeek(weather) {
   return days;
 }
 
-export function determineWeather(summary = '') {
-  summary = summary.toLowerCase();
+export function determineWeather(icon = '') {
+  icon = icon.toLowerCase();
 
-  switch (summary) {
-    case /cloud/ig:
-      return 'cloudy';
+  switch (true) {
+    case /rain/.test(icon):
+      return 'raining';
+    case /snow/.test(icon):
+      return 'snowing';
+    case /sleet/.test(icon):
+      return 'snowing';
+    case /fog/.test(icon):
+      return 'foggy';
+    case /wind/.test(icon):
+      return 'windy';
+    case /cloud/.test(icon):
+      return 'partly-cloudy';
+    case /partly\-cloudy/.test(icon):
+      return 'partly-cloudy';
+    case /clear\-day/.test(icon):
+      return 'clear-day';
+    case /clear\-night/.test(icon):
+      return 'clear-night';
   }
 }
 
-export function determineWeatherFromIcon(icon = '') {
+export function determineIcon(icon = '') {
   icon = icon.toLowerCase();
 
   switch (true) {
@@ -59,7 +75,5 @@ export function determineWeatherFromIcon(icon = '') {
       return 'icon-sun2';
     case /clear\-night/.test(icon):
       return 'icon-stars2';
-    case /clear-day/.test(icon):
-      return 'icon-sun2';
   }
 }

@@ -1,5 +1,20 @@
 import 'whatwg-fetch';
 
+const cities = {
+  LA: {
+    coords: {
+      latitude: 33.9979826,
+      longitude: -118.4577739
+    }
+  },
+  SF: {
+    coords: {
+      latitude: 37.75767,
+      longitude: -122.50764
+    }
+  }
+};
+
 export default {
 
   init() {
@@ -49,6 +64,9 @@ export default {
   getPosition() {
 
     return new Promise((resolve, reject) => {
+
+      // return resolve(cities.LA);
+
       navigator.geolocation.getCurrentPosition(position => {
 
         var { latitude, longitude } = position.coords;

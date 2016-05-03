@@ -1,6 +1,6 @@
 @import 'icons';
 
-html, body {
+body {
   background: #f8f8f8;
   font-family: 'Avenir Next', sans-serif;
   margin: 0;
@@ -108,7 +108,13 @@ strong {
     to bottom,
     #BFCACE 30%,
     #93BADA 70%);
+}
 
+.app.partly-cloudy-night {
+  background: linear-gradient(
+    to bottom,
+    #BFCACE 30%,
+    #93BADA 70%);
 }
 
 .container {
@@ -145,7 +151,7 @@ strong {
 }
 
 .time {
-  font-weight: 200;
+  font-weight: 400;
   opacity: 0.8;
 }
 
@@ -186,11 +192,11 @@ strong {
 
     &--temp {
       white-space: nowrap;
-      font-weight: lighter;
+      font-weight: 400;
       font-size: 0.9em;
 
       span {
-        opacity: 0.4;
+        opacity: 0.8;
       }
 
 
@@ -204,7 +210,7 @@ strong {
   .bars {
     display: flex;
     align-items: flex-end;
-    height: 35vh;
+    height: 40vh;
     overflow-x: scroll;
     padding-left: 13px;
     -webkit-overflow-scrolling: touch;
@@ -251,6 +257,7 @@ strong {
         top: -2.5em;
         font-size: 0.8em;
         color: white;
+        font-weight: 400;
       }
     }
   }
