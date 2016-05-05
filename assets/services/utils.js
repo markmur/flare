@@ -42,8 +42,8 @@ export function determineWeather(icon = '') {
       return 'foggy';
     case /wind/.test(icon):
       return 'windy';
-    case /cloud/.test(icon):
-      return 'partly-cloudy';
+    case /cloudy/.test(icon):
+      return 'cloudy';
     case /partly\-cloudy/.test(icon):
       return 'partly-cloudy';
     case /clear\-day/.test(icon):

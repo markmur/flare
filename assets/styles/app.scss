@@ -66,10 +66,9 @@ strong {
 
 .app.clear-day {
   background: linear-gradient(
-    to bottom,
-    #3F7AF2 30%,
-    #4D87FA 70%,
-    #6DA0FF);
+  to bottom,
+  #688CD6 30%,
+  #96B4F1 70%);
 }
 
 .app.clear-night {
@@ -90,10 +89,9 @@ strong {
 
 .app.snowing {
   background: linear-gradient(
-    to bottom,
-    #8D99B8 30%,
-    #94A2C8 70%,
-    #94A2C8);
+  to bottom,
+  #D3D3DA 30%,
+  #B3B3C4 70%);
 }
 
 .app.raining {
@@ -115,6 +113,13 @@ strong {
     to bottom,
     #BFCACE 30%,
     #93BADA 70%);
+}
+
+.app.mostly-cloudy {
+  background: linear-gradient(
+  to bottom,
+  #D3D6DA 30%,
+  #B3B5C4 70%);
 }
 
 .container {

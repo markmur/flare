@@ -65,7 +65,7 @@ export default {
 
     return new Promise((resolve, reject) => {
 
-      // return resolve(cities.LA);
+      // return resolve(cities.SF);
 
       navigator.geolocation.getCurrentPosition(position => {
 
