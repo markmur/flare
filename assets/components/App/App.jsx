@@ -24,7 +24,7 @@ export default class App extends Component {
       position: {},
       location: {},
       weather: {},
-      temp: 'f'
+      temp: 'c'
     };
   }
 

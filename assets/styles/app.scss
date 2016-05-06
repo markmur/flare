@@ -1,5 +1,13 @@
 @import 'icons';
 
+$iphone6: (375px, 667px);
+
+@mixin device($device) {
+  @media (min-width: nth($device, 1)) and (max-width: nth($device, 2)) {
+    @content;
+  }
+}
+
 body {
   background: #f8f8f8;
   font-family: 'Avenir Next', sans-serif;
@@ -8,6 +16,14 @@ body {
   text-align: center;
   overflow: hidden;
   color: white;
+}
+
+p {
+  padding: 0 1em;
+
+  @include device($iphone6) {
+    font-size: 0.8em;
+  }
 }
 
 ul {
@@ -165,6 +181,10 @@ strong {
   justify-content: center;
   letter-spacing: -5px;
 
+  @include device($iphone6) {
+    margin: 10px 0;
+  }
+
   span {
     font-size: 0.7em;
   }
@@ -195,6 +215,10 @@ strong {
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @include device($iphone6) {
+    margin-top: 1em;
   }
 
   @media (min-width: 1000px) {
@@ -233,11 +257,18 @@ strong {
 
 .BarChart {
   padding-top: 2em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  @include device($iphone6) {
+    padding-top: 0.5em;
+  }
 
   .bars {
     display: flex;
     align-items: flex-end;
-    height: 40vh;
+    height: 30vh;
     overflow-x: scroll;
     padding-left: 13px;
     -webkit-overflow-scrolling: touch;
