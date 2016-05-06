@@ -1,10 +1,10 @@
 import moment from 'moment';
 
-export function convert(val, round) {
-  val = String((val - 32) * 5 / 9);
+export function convert(val, temp) {
+  temp = temp.toLowerCase();
 
-  if (typeof round !== 'undefined' && round === false) return val;
-  else return Math.round(val);
+  if (temp === 'f') return Math.round(val);
+  else return Math.round(String((val - 32) * 5 / 9));
 }
 
 export function getLocality(addresses) {
@@ -56,19 +56,19 @@ export function determineIcon(icon = '') {
 
   switch (true) {
     case /rain/.test(icon):
-      return 'icon-cloud-rain2';
+      return 'icon-raindrops2';
     case /snow/.test(icon):
       return 'icon-cloud-snow2';
-    case /cloudy/.test(icon):
-      return 'icon-cloud2';
+    case /partly\-cloudy/.test(icon):
+      return 'icon-cloud-sun2';
     case /sleet/.test(icon):
       return 'icon-snow';
     case /fog/.test(icon):
       return 'icon-cloud-fog2';
     case /wind/.test(icon):
       return 'icon-wind';
-    case /partly\-cloudy/.test(icon):
-      return 'icon-cloud-sun2';
+    case /^cloudy$/.test(icon):
+      return 'icon-clouds2';
     case /clear\-day/.test(icon):
       return 'icon-sun2';
     case /clear\-night/.test(icon):

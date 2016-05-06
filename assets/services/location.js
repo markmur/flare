@@ -12,6 +12,36 @@ const cities = {
       latitude: 37.75767,
       longitude: -122.50764
     }
+  },
+  Barbados: {
+    coords: {
+      latitude: 13.1900945,
+      longitude: -59.6756503
+    }
+  },
+  Miami: {
+    coords: {
+      latitude: 25.7823072,
+      longitude: -80.3011204
+    }
+  },
+  NY: {
+    coords: {
+      latitude: 40.7053111,
+      longitude: -74.2581875
+    }
+  },
+  Seychelles: {
+    coords: {
+      latitude: -4.6838005,
+      longitude: 55.3794376
+    }
+  },
+  Rio: {
+    coords: {
+      latitude: -22.9109878,
+      longitude: -43.728526
+    }
   }
 };
 
@@ -65,7 +95,7 @@ export default {
 
     return new Promise((resolve, reject) => {
 
-      // return resolve(cities.SF);
+      // return resolve(cities.Rio);
 
       navigator.geolocation.getCurrentPosition(position => {
 

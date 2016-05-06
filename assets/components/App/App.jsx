@@ -24,6 +24,7 @@ export default class App extends Component {
       position: {},
       location: {},
       weather: {},
+      temp: 'f'
     };
   }
 
@@ -34,6 +35,12 @@ export default class App extends Component {
     });
   }
 
+  setTemp(temp) {
+    this.setState({
+      temp
+    });
+  }
+
   render() {
     var state = this.state;
 
@@ -41,7 +48,6 @@ export default class App extends Component {
     var week = [];
 
     if (!state.loading) {
-      console.log('RENDERING STATE', state);
       location = getLocality(state.location.address_components);
       week = mapWeatherToWeek(state.weather.daily.data);
     }
@@ -51,21 +57,24 @@ export default class App extends Component {
       {this.state.loading ? 'Loading...' :
         <div>
           <div class={classNames('app', determineWeather(state.weather.currently.icon))}>
+            <div class="temp-toggle">
+              <span onClick={() => this.setTemp('c')} class={classNames({active: this.state.temp === 'c'})}>C</span>
+              <em>/</em>
+              <span onClick={() => this.setTemp('f')} class={classNames({active: this.state.temp === 'f'})}>F</span>
+            </div>
             <div class="summary">
               {state.weather.currently.summary}
             </div>
-            <div class="temperature">
-              {convert(state.weather.currently.temperature)}<span>°</span>
+            <div class="temperature" onClick={() => this.toggleTemp()}>
+              {convert(state.weather.currently.temperature, state.temp)}<span>°</span>
             </div>
             <div class="location">{location}</div>
+            <p>{this.state.weather.daily.summary}</p>
             <div class="time">Today, {moment().format('h:mm a')}</div>
-
-            <Forecast ref="forecast" week={week} />
-
-            <BarChart data={state.weather.hourly.data} />
+            <Forecast ref="forecast" temp={state.temp} week={week} />
+            <BarChart temp={state.temp} data={state.weather.hourly.data} />
           </div>
-        </div>
-        }
+        </div>}
       </div>
     );
   }

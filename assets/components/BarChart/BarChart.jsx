@@ -29,7 +29,7 @@ export default class BarChart extends Component {
               <div class="bar" style={{ height: `${hour.percent}%` }}>
                 <span class="time">{moment().add(i + 1, 'hours').format('ha')}</span>
                 <span class="temp">
-                  {convert(hour.temperature)}<span class="deg">°</span>
+                  {convert(hour.temperature, this.props.temp)}<span class="deg">°</span>
                 </span>
               </div>
             </li>
