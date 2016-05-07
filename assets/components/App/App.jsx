@@ -69,7 +69,7 @@ export default class App extends Component {
             <div class="summary">
               {state.weather.currently.summary}
             </div>
-            <div class="temperature" onClick={() => this.toggleTemp()}>
+            <div class="temperature">
               {convert(state.weather.currently.temperature, state.temp)}<span>°</span>
             </div>
             <div class="location">{location}</div>
