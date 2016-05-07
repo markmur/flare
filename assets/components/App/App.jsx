@@ -24,7 +24,9 @@ export default class App extends Component {
       position: {},
       location: {},
       weather: {},
-      temp: 'c'
+      temp: (() => {
+        return localStorage.getItem('tempPreference') || 'c';
+      })()
     };
   }
 
@@ -38,6 +40,8 @@ export default class App extends Component {
   setTemp(temp) {
     this.setState({
       temp
+    }, () => {
+      localStorage.setItem('tempPreference', temp);
     });
   }
 
