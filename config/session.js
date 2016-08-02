@@ -67,12 +67,9 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  adapter: 'mongo',
-  url: `mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.PORT}/${process.env.DB}`,
-  host: process.env.HOST,
-  port: process.env.PORT,
-  db: process.env.DB,
-  collection: 'sessions',
+  // adapter: 'mongo',
+  // url: `mongodb://${USERNAME}:${PASSWORD}@${HOST}:${PORT}/${DB}?authSource=admin`,
+  // stringify: false,
 
   /***************************************************************************
   *                                                                          *
@@ -82,9 +79,6 @@ module.exports.session = {
   * 'mongodb://user:pass@host:port/database/collection',                     *
   *                                                                          *
   ***************************************************************************/
-
-  username: process.env.USERNAME,
-  password: process.env.PASSWORD,
   // auto_reconnect: false,
   // ssl: false,
   // stringify: true
