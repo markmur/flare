@@ -31,9 +31,9 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // cookie: {
-  //   maxAge: 24 * 60 * 60 * 1000
-  // },
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000 * 7
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -67,11 +67,11 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'mongo',
-  // host: 'localhost',
-  // port: 27017,
-  // db: 'sails',
-  // collection: 'sessions',
+  adapter: 'mongo',
+  host: process.env.HOST,
+  port: process.env.PORT,
+  db: process.env.DB,
+  collection: 'sessions',
 
   /***************************************************************************
   *                                                                          *
@@ -82,8 +82,8 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // username: '',
-  // password: '',
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
   // auto_reconnect: false,
   // ssl: false,
   // stringify: true
