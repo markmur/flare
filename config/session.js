@@ -68,6 +68,7 @@ module.exports.session = {
   ***************************************************************************/
 
   adapter: 'mongo',
+  url: `mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.PORT}/${process.env.DB}/sessions`,
   host: process.env.HOST,
   port: process.env.PORT,
   db: process.env.DB,
