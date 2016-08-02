@@ -58,27 +58,28 @@ export default class App extends Component {
 
     return (
       <div>
-      {this.state.loading ? 'Loading...' :
-        <div>
-          <div class={classNames('app', determineWeather(state.weather.currently.icon))}>
-            <div class="temp-toggle">
-              <span onClick={() => this.setTemp('c')} class={classNames({active: this.state.temp === 'c'})}>C</span>
-              <em>/</em>
-              <span onClick={() => this.setTemp('f')} class={classNames({active: this.state.temp === 'f'})}>F</span>
+        {this.state.loading ? 'Loading...' :
+          <div>
+            <div class={classNames('app', determineWeather(state.weather.currently.icon))}>
+              <div class="temp-toggle">
+                <span onClick={() => this.setTemp('c')} class={classNames({active: this.state.temp === 'c'})}>C</span>
+                <em>/</em>
+                <span onClick={() => this.setTemp('f')} class={classNames({active: this.state.temp === 'f'})}>F</span>
+              </div>
+              <div class="summary">
+                {state.weather.currently.summary}
+              </div>
+              <div class="temperature">
+                {convert(state.weather.currently.temperature, state.temp)}<span>°</span>
+              </div>
+              <div class="location">{location}</div>
+              <p>{this.state.weather.daily.summary}</p>
+              <div class="time">Today, {moment().format('h:mm a')}</div>
+              <Forecast ref="forecast" temp={state.temp} week={week} />
+              <BarChart temp={state.temp} data={state.weather.hourly.data} />
             </div>
-            <div class="summary">
-              {state.weather.currently.summary}
-            </div>
-            <div class="temperature">
-              {convert(state.weather.currently.temperature, state.temp)}<span>°</span>
-            </div>
-            <div class="location">{location}</div>
-            <p>{this.state.weather.daily.summary}</p>
-            <div class="time">Today, {moment().format('h:mm a')}</div>
-            <Forecast ref="forecast" temp={state.temp} week={week} />
-            <BarChart temp={state.temp} data={state.weather.hourly.data} />
           </div>
-        </div>}
+        }
       </div>
     );
   }

@@ -1,17 +1,16 @@
 {
-  "name": "sails-react-webpack",
+  "name": "flare",
   "private": false,
-  "version": "0.0.1",
-  "description": "A Sails, React & Webpack boilerplate",
+  "version": "0.1.0",
+  "description": "Flare Forecast App",
   "engines": {
     "node": "5.8.0",
     "npm": ">= 3.7.3"
   },
   "keywords": [
-    "sails",
-    "react",
-    "webpack",
-    "boilerplate"
+    "flare",
+    "forecast",
+    "weather"
   ],
   "dependencies": {
     "assets-webpack-plugin": "^3.4.0",
@@ -55,7 +54,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/markmur/sails-react-webpack.git"
+    "url": "git://github.com/markmur/flare.git"
   },
   "author": "Mark Murray <mark@boxfish.com>",
   "license": "MIT",
@@ -83,13 +82,5 @@
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack-dev-server": "^1.14.1"
-  },
-  "jest": {
-    "unmockedModulePathPatterns": [
-      "react",
-      "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
-    ],
-    "testDirectoryName": "assets/components"
   }
 }

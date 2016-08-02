@@ -1,5 +1,6 @@
 const request = require('request');
 const weather = require('../fixtures/weather.json');
+const API_KEY = sails.config.local.API_KEY || process.env.API_KEY;
 
 module.exports = {
   index: function (req, res) {
@@ -34,7 +35,5 @@ module.exports = {
 
       return res.json(JSON.parse(body));
     });
-
-    // return res.json(weather);
   },
 };

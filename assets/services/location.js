@@ -95,8 +95,6 @@ export default {
 
     return new Promise((resolve, reject) => {
 
-      // return resolve(cities.Rio);
-
       navigator.geolocation.getCurrentPosition(position => {
 
         var { latitude, longitude } = position.coords;
