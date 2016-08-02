@@ -63,9 +63,9 @@ module.exports.http = {
     secureOnly: function(req, res, next) {
       if (sails.config.environment !== "production") return next();
 
-      if (req.headers['x-forwarded-proto'] !== 'https')
-        res.redirect('https://flare-forecast.herokuapp.com' + req.url);
-      else
+      // if (req.headers['x-forwarded-proto'] !== 'https')
+      //   res.redirect('https://flare-forecast.herokuapp.com' + req.url);
+      // else
         next();
     },
 
