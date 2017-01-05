@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import forecast from 'services/forecast';
 
 const cities = {
   LA: {
@@ -95,13 +96,9 @@ export default {
 
     return new Promise((resolve, reject) => {
 
-      // return resolve(cities.Rio);
-
       navigator.geolocation.getCurrentPosition(position => {
 
         var { latitude, longitude } = position.coords;
-
-        console.debug('[Location]', position);
 
         this.updatePosition(position, resolve);
 
@@ -126,8 +123,7 @@ export default {
 
   getWeather(latitude, longitude) {
     return new Promise((resolve, reject) => {
-      io.socket.get(`/weather?latitude=${latitude}&longitude=${longitude}`, (res, jwr) => {
-        console.debug('[Weather]', res);
+      forecast.getForecast(latitude, longitude).then(res => {
         resolve(res);
       });
     });
