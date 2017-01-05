@@ -39,7 +39,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/markmur/sails-react-webpack.git"
+    "url": "git://github.com/markmur/flare.git"
   },
   "author": "Mark Murray <mark@boxfish.com>",
   "license": "MIT",

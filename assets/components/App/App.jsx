@@ -89,7 +89,6 @@ export default class App extends Component {
               <Forecast ref="forecast" temp={temp} week={week} />
 
               <BarChart temp={temp} data={this.state.weather.hourly.data} />
-
             </div>
           </div>
         }
