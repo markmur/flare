@@ -49,35 +49,33 @@ const cities = {
 export default {
 
   init() {
-    var cachedPosition = this.getStoredPosition();
 
-    if (!cachedPosition) {
-
-      return new Promise(resolve => {
-        this.getPosition().then(position => {
-          this.getLocationAndWeather(
-            position.coords.latitude,
-            position.coords.longitude
+    return new Promise(resolve => {
+      this.getPosition().then(position => {
+        this.getLocationAndWeather(
+          position.coords.latitude,
+          position.coords.longitude
         ).then(res => {
           res.position = position;
           return resolve(res);
         });
-        });
       });
+    });
+    
+  },
 
-    } else {
+  getCachedPosition() {
+    const cachedPosition = this.getStoredPosition();
 
-      return this.getLocationAndWeather(
-        cachedPosition.coords.latitude,
-        cachedPosition.coords.longitude
-      ).then(res => {
-        return new Promise(resolve => {
-          res.position = cachedPosition;
-          resolve(res);
-        });
+    return this.getLocationAndWeather(
+      cachedPosition.coords.latitude,
+      cachedPosition.coords.longitude
+    ).then(res => {
+      return new Promise(resolve => {
+        res.position = cachedPosition;
+        resolve(res);
       });
-
-    }
+    });
   },
 
   getLocationAndWeather(lat, lng) {
