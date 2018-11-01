@@ -1,0 +1,460 @@
+@import 'icons';
+
+$iphone6: (375px, 667px);
+
+@mixin device($device) {
+  @media (min-width: nth($device, 1)) and (max-width: nth($device, 2)) {
+    @content;
+  }
+}
+
+body {
+  background: #f8f8f8;
+  font-family: 'Avenir Next', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  color: white;
+}
+
+p {
+  padding: 0 1em;
+
+  @include device($iphone6) {
+    font-size: 0.8em;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+strong {
+  font-weight: 400;
+}
+
+.searchbar {
+  background: rgba(white, 0.3);
+  height: 100vh;
+  position: absolute;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  width: 100%;
+  z-index: 10;
+  text-align: left;
+
+  input {
+    background: transparent;
+    color: white;
+    font-size: 4em;
+    text-align: left;
+    border: none;
+    padding: 10px;
+    outline: none;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+}
+
+.app {
+  height: 100vh;
+  padding-top: 3em;
+  position: relative;
+  z-index: 1;
+  color: white;
+  transition: background 0.35s;
+}
+
+.app.searching {
+  filter: blur(4px);
+}
+
+.app.clear-day {
+  background: linear-gradient(
+  to bottom,
+  #688CD6 30%,
+  #96B4F1 70%);
+}
+
+.app.clear-night {
+  background: linear-gradient(
+    to bottom,
+    rgb(67,66,94),
+    rgb(103,140,154),
+    rgb(140,170,219));
+}
+
+.app.sunny {
+  background: linear-gradient(
+    to bottom,
+    #d38d7c 30%,
+    #bd7c83 70%,
+    #a6717a);
+}
+
+.app.snowing {
+  background: linear-gradient(
+  to bottom,
+  #D3D3DA 30%,
+  #B3B3C4 70%);
+}
+
+.app.raining {
+  background: linear-gradient(
+    to bottom,
+    #8e9eab 30%,
+    #AAB7BA 70%);
+}
+
+.app.partly-cloudy {
+  background: linear-gradient(
+    to bottom,
+    #BFCACE 30%,
+    #77ADD9 70%);
+}
+
+.app.partly-cloudy-night {
+  background: linear-gradient(
+    to bottom,
+    #BFCACE 30%,
+    #93BADA 70%);
+}
+
+.app.mostly-cloudy {
+  background: linear-gradient(
+  to bottom,
+  #D3D6DA 30%,
+  #B3B5C4 70%);
+}
+
+.container {
+  max-width: 800px;
+  margin: 2em auto;
+}
+
+.temp-toggle {
+  position: absolute;
+  top: 0; right: 0;
+  margin: 2em;
+  cursor: pointer;
+
+  em {
+    margin: 0 0.75em 0 0.5em;
+    opacity: 0.6;
+    font-weight: 300;
+  }
+
+  span {
+    font-size: 1.2em;
+    font-weight: 200;
+
+    &.active {
+      font-weight: 400;
+    }
+  }
+}
+
+.summary {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+}
+
+.temperature {
+  font-size: 6rem;
+  color: white;
+  margin: 20px 0;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  letter-spacing: -5px;
+
+  @include device($iphone6) {
+    margin: 10px 0;
+  }
+
+  span {
+    font-size: 0.7em;
+  }
+}
+
+.location {
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.time {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.forecast {
+  background: rgba(white, 0.15);
+  padding: 1.5em 0.5em;
+  margin-top: 3em;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  list-style-type: none;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include device($iphone6) {
+    margin-top: 1em;
+  }
+
+  @media (min-width: 1000px) {
+    justify-content: center;
+
+    .forecast-item {
+      padding: 0 2em!important;
+    }
+  }
+
+  .forecast-item {
+    padding: 0 1.25em;
+
+    &--day {
+      letter-spacing: 1px;
+      font-size: 0.9em;
+    }
+
+    &--icon {
+      font-size: 2em;
+    }
+
+    &--temp {
+      white-space: nowrap;
+      font-weight: 400;
+      font-size: 0.9em;
+
+      span {
+        opacity: 0.8;
+      }
+
+
+    }
+  }
+}
+
+.BarChart {
+  padding-top: 2em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  @include device($iphone6) {
+    padding-top: 0.5em;
+  }
+
+  .bars {
+    display: flex;
+    align-items: flex-end;
+    height: 30vh;
+    overflow-x: scroll;
+    padding-left: 13px;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .bar-item {
+      position: relative;
+      margin-right: 13px;
+      flex: 1 0 auto;
+      text-align: center;
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
+      padding-top: 3em;
+
+      .bar {
+        position: relative;
+        background: rgba(white, 0.2);
+        border-radius: 3px;
+        padding: 0.75em 0;
+        font-size: 0.8em;
+        width: 25px;
+        height: 0;
+        transition: height 0.5s ease-in;
+      }
+
+      .temp {
+        .deg {
+          font-size: 0.9em;
+          opacity: 0.6;
+          margin-left: 1px;
+          position: relative;
+          top: -2px;
+        }
+      }
+
+      .time {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -2.5em;
+        font-size: 0.8em;
+        color: white;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+$bg-loader: #77ADD9;
+
+.loader-container {
+  background: $bg-loader;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+
+  > p {
+    margin-top: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: Helvetica Neue;
+  }
+}
+
+.forecast-loader {
+  position: relative;
+  display: block;
+  background: $bg-loader;
+  text-align: center;
+  height: 100px;
+
+  .cloud {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 3.6875em;
+    height: 3.6875em;
+    margin: -1.84375em;
+    background: $bg-loader;
+    border-radius: 50%;
+    box-shadow:
+      -2.1875em 0.6875em 0 -0.6875em $bg-loader,
+      2.0625em 0.9375em 0 -0.9375em $bg-loader,
+      0 0 0 0.375em #fff,
+      -2.1875em 0.6875em 0 -0.3125em #fff,
+      2.0625em 0.9375em 0 -0.5625em #fff;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -0.5em;
+      display: block;
+      width: 4.5625em;
+      height: 1em;
+      background: $bg-loader;
+      box-shadow: 0 0.4375em 0 -0.0625em #fff;
+    }
+
+    &:nth-child(2) {
+      z-index: 0;
+      background: #fff;
+      box-shadow:
+        -2.1875em 0.6875em 0 -0.6875em #fff,
+        2.0625em 0.9375em 0 -0.9375em #fff,
+        0 0 0 0.375em #fff,
+        -2.1875em 0.6875em 0 -0.3125em #fff,
+        2.0625em 0.9375em 0 -0.5625em #fff;
+      opacity: 0.3;
+      transform: scale(0.5) translate(6em, -3em);
+      animation: cloud 4s linear infinite;
+    }
+
+    &:nth-child(2):after { background: #fff; }
+  }
+
+  .sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    margin: -1.25em;
+    background: $bg-loader;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.375em #fff;
+    animation: spin 12s infinite linear;
+
+    .rays {
+      position: absolute;
+      top: -2em;
+      left: 50%;
+      display: block;
+      width: 0.375em;
+      height: 1.125em;
+      margin-left: -0.1875em;
+      background: #fff;
+      border-radius: 0.25em;
+      box-shadow: 0 5.375em #fff;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0em;
+        left: 0em;
+        display: block;
+        width: 0.375em;
+        height: 1.125em;
+        transform: rotate(60deg);
+        transform-origin: 50% 3.25em;
+        background: #fff;
+        border-radius: 0.25em;
+        box-shadow: 0 5.375em #fff;
+      }
+
+      &:before {
+        transform: rotate(120deg);
+      }
+    }
+  }
+
+  .cloud + .sun {
+    margin: -2em 1em;
+  }
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cloud {
+  0% { opacity: 0; }
+  50% { opacity: 0.3; }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate(-200%, -3em);
+  }
+}
