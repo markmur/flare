@@ -19,7 +19,7 @@ exports.forecast = functions.https.onRequest((req, res) => {
   console.log(req.query)
   const { latitude, longitude } = req.query
 
-  res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Origin', 'https://flare-e5b26.firebaseapp.com')
 
   return fetchForecast(latitude, longitude)
     .then(({ data }) => res.send(data))
