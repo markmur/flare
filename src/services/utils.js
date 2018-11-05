@@ -1,5 +1,4 @@
 import moment from 'moment'
-import { find } from 'lodash-es'
 
 export function convert(val, temp) {
   temp = temp.toLowerCase()
@@ -10,7 +9,7 @@ export function convert(val, temp) {
 }
 
 export function getLocality(addresses) {
-  const locality = find(addresses, item => item.types.indexOf('locality') > -1)
+  const locality = addresses.find(item => item.types.indexOf('locality') > -1)
 
   return locality.long_name
 }
