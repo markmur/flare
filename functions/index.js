@@ -41,6 +41,8 @@ exports.location = functions.https.onRequest((req, res) => {
   console.log('location', req.query)
   const { latitude, longitude } = req.query
 
+  res.set('Access-Control-Allow-Origin', APP_URL)
+
   return getLocationFromCoords(latitude, longitude)
     .then(({ data }) => res.send(data))
     .catch(handleError(res))
