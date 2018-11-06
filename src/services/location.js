@@ -1,15 +1,5 @@
-import forecast from './forecast'
-
-export const getForecast = () => {
-  return getPosition().then(position => {
-    const { latitude, longitude } = position.coords
-
-    return getWeather(latitude, longitude).then(weather => ({
-      position,
-      weather
-    }))
-  })
-}
+import get from 'lodash.get'
+import Api from './api'
 
 const getPosition = () => {
   return new Promise((resolve, reject) => {
@@ -17,5 +7,16 @@ const getPosition = () => {
   })
 }
 
-const getWeather = (latitude, longitude) =>
-  forecast.getForecast(latitude, longitude).then(({ data }) => data)
+export const getForecast = () => {
+  return getPosition().then(position => {
+    const { latitude, longitude } = position.coords
+
+    return Promise.all([
+      Api.getForecast(latitude, longitude),
+      Api.getLocationFromCoords(latitude, longitude)
+    ]).then(([weather, location]) => ({
+      weather,
+      location: get(location, 'results.0.formatted_address')
+    }))
+  })
+}

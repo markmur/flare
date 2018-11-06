@@ -20,10 +20,11 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { weather } = await getForecast()
+    const { weather, location } = await getForecast()
     this.setState(() => ({
       loading: false,
-      weather
+      weather,
+      location
     }))
   }
 
@@ -39,7 +40,7 @@ class App extends Component {
   }
 
   render() {
-    const { loading, tempPreference, weather } = this.state
+    const { loading, tempPreference, weather, location } = this.state
 
     if (loading) return <Loader loading />
 
@@ -70,9 +71,7 @@ class App extends Component {
           {convert(weather.currently.temperature, tempPreference)}
           <span>°</span>
         </div>
-        <div className="location">
-          {weather.timezone.slice(weather.timezone.lastIndexOf('/') + 1)}
-        </div>
+        <div className="location">{location}</div>
         <p>{weather.daily.summary}</p>
         <div className="time">Today, {moment().format('h:mm a')}</div>
         <Forecast temp={tempPreference} week={week} />
